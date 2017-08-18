@@ -1,0 +1,3 @@
+---
+# defaults for transparent-huge-pages
+mode: 'never'

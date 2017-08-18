@@ -1,0 +1,11 @@
+[Unit]
+Description=Manage Transparent Huge Pages
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/default/transparent_hugepages
+ExecStart=/usr/bin/sh -c "/usr/bin/echo ${MODE} | tee /sys/kernel/mm/transparent_hugepage/enabled"
+ExecStart=/usr/bin/sh -c "/usr/bin/echo ${MODE} | tee /sys/kernel/mm/transparent_hugepage/defrag"
+
+[Install]
+WantedBy=multi-user.target

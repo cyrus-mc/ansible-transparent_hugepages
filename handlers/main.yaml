@@ -1,0 +1,5 @@
+---                                                                             
+- name: reload-transparent-hugepages
+  systemd:
+    name: transparent-hugepages
+    daemon_reload: yes
