@@ -1,5 +1,3 @@
----                                                                             
-- name: reload-transparent-hugepages
-  systemd:
-    name: transparent-hugepages
-    daemon_reload: yes
+---
+- name: restart-transparent-hugepages
+  service: name=transparent_hugepages state=restarted enabled=yes

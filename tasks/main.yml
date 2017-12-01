@@ -1,17 +1,10 @@
-- name: Create service (/etc/systemd/system/transparent-hugepages.service)
-  copy:
-    src: transparent-hugepages.service
-    dest: /etc/systemd/system/transparent_hugepages.service
-    mode: 0644
+- name: template /etc/sysconfig/transparent_hugepages
+  template: src=transparent_hugepages.j2 dest=/etc/sysconfig/transparent_hugepages mode=0644
 
-- name: Set transparent hugepages mode (/etc/default/transparent_hugepages)
-  template:
-    src: transparent_hugepages.j2
-    dest: /etc/default/transparent_hugepages
-  notify: reload-transparent-hugepages
+- name: create service
+  copy: src=transparent_hugepages dest=/etc/init.d/transparent_hugepages mode=0755
+  notify:
+    - restart-transparent-hugepages
 
-- name: Enable Transparent Hugepages Service
-  service:
-    name: transparent_hugepages.service
-    state: started
-    enabled: yes
+- name: service enable and start
+  service: name=transparent_hugepages state=started enabled=yes
