@@ -6,7 +6,7 @@ An Ansible Role to set the transparent huge pages mode.
 
 Available variables are listed below, along with the default values (see `defaults/main.yml`):
 
-    mode: never
+   transparent_hugepages_mode: never
 
     values:
       never
